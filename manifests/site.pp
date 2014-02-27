@@ -11,18 +11,15 @@ node "app.vagrant.local" {
   	ensure => present,
   }
 
-
-  tomcat7_rhel::tomcat_application { "my-web-application":
+  tomcat7_rhel::tomcat_application { "example-servlet":
     application_root => "/opt",
     tomcat_user => "java",
     tomcat_port => "8080",
-    jvm_envs => "-server -Xmx1024m -Xms128m -XX:MaxPermSize=256m -Dmy.java.opt=i_love_java -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Djava.rmi.server.hostname=some.ip.address",
+    jvm_envs => "-server -Xmx1024m -XX:MaxPermSize=64m -Driak_ip=10.10.10.11",
     tomcat_manager => true,
-    tomcat_admin_user => "superuser",
+    tomcat_admin_user => "java",
     tomcat_admin_password => "secretpassword",
     smoke_test_path => "/health-check",
-    jmx_registry_port => 10000,
-    jmx_server_port => 10001,
     require => User["java"]
   }
 }
