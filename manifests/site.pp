@@ -15,7 +15,7 @@ node "app.vagrant.local" {
     application_root => "/opt",
     tomcat_user => "java",
     tomcat_port => "8080",
-    jvm_envs => "-server -Xmx1024m -XX:MaxPermSize=64m -Driak_ip=10.10.10.11",
+    jvm_envs => "-server -Xmx1024m -XX:MaxPermSize=64m -Driak_ip=10.10.10.11 -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.authenticate=false  -Dcom.sun.management.jmxremote.ssl=false",
     tomcat_manager => true,
     tomcat_admin_user => "java",
     tomcat_admin_password => "secretpassword",
